@@ -1,6 +1,6 @@
-typedef struct minimum {
+typedef struct pair {
     int index;
     int value;
-} minimum;
+} pair;
 
-minimum min(const int *const array, const int length);
+pair minArray(const int *const array, const int length);
