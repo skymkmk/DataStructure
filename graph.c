@@ -35,7 +35,7 @@ graph generateGraphFromFile(const char filename[]) {
     for (int i = 0; i < length; i++) {
         while (1) {
             fscanf(fp, "%d", &adjvex);
-            setEdge(vertices, i, adjvex);
+            setEdge(vertices, i, adjvex - 1); // Use adjvex - 1 to adapt the array starting from 0
             c = fgetc(fp);
             if (c == '\n' || c == EOF) break;
         }
