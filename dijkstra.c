@@ -54,12 +54,24 @@ LStack shortestPath(const graph theGraph, const dijkstraResult result, const int
     LStack stack = newStack(target);
     while (stack->data != source) {
         if (result.path[stack->data] != -1) push(&stack, result.path[stack->data]);
-        else {
-            printf("找不到路径！");
-            return NULL;
-        }
+        else return NULL;
     }
     return stack;
+}
+
+int getShortestLength(const graph theGraph, const dijkstraResult result, const int source, const int target) {
+    LStack path = shortestPath(theGraph, result, source, target);
+    int length = 0;
+    if (path == NULL) return -1;
+    else {
+        int psrc = pop(&path), pdst;
+        while (path != NULL) {
+            pdst = pop(&path);
+            length += findWeight(theGraph, psrc, pdst);
+            psrc = pdst;
+        }
+    }
+    return length;
 }
 
 void printShortestPath(const dijkstraResult result, const graph theGraph, const int source, const int target) {

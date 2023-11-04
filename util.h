@@ -6,4 +6,6 @@ typedef struct pair {
 } pair;
 
 pair minArray(const int *const array, const int length);
+pair maxArray(const int *const array, const int length);
+pair minPairs(const pair *const pairs, const int length);
 #endif
