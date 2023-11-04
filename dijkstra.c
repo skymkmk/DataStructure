@@ -50,21 +50,29 @@ dijkstraResult dijkstra(const graph theGraph, const int source) {
     return result;
 }
 
-void printShortestPath(const dijkstraResult result, const graph theGraph, const int source, const int target) {
+LStack shortestPath(const graph theGraph, const dijkstraResult result, const int source, const int target) {
     LStack stack = newStack(target);
     while (stack->data != source) {
         if (result.path[stack->data] != -1) push(&stack, result.path[stack->data]);
         else {
             printf("找不到路径！");
-            return;
+            return NULL;
         }
     }
-    int psrc = pop(&stack), pdst;
-    printf("%d", psrc + 1);
-    while (stack != NULL) {
-        pdst = pop(&stack);
-        printf(" --%d-> %d", findWeight(theGraph, psrc, pdst), pdst + 1);
-        psrc = pdst;
+    return stack;
+}
+
+void printShortestPath(const dijkstraResult result, const graph theGraph, const int source, const int target) {
+    LStack stack = shortestPath(theGraph, result, source, target);
+    if (stack == NULL) printf("找不到路径！\n");
+    else {
+        int psrc = pop(&stack), pdst;
+        printf("%d", psrc + 1);
+        while (stack != NULL) {
+            pdst = pop(&stack);
+            printf(" --%d-> %d", findWeight(theGraph, psrc, pdst), pdst + 1);
+            psrc = pdst;
+        }
+        printf("\n");
     }
-    printf("\n");
 }
