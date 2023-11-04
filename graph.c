@@ -54,7 +54,7 @@ void printGraph (const graph theGrpah) {
         else {
             ENode* p = theGrpah.vertices[i].first;
             do {
-                printf("-> %d ", p->adjvex);
+                printf("-> %d ", p->adjvex + 1);
                 p = p->next;
             } while (p != NULL);
         }
