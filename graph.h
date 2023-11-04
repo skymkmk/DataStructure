@@ -26,4 +26,5 @@ void setEdge(VNode *const vertices, const int vertice, const int adjvex); // ver
 // 从文件输入图
 graph generateGraphFromFile(const char filename[]);
 
+// 打印图
 void printGraph (const graph theGrpah);
