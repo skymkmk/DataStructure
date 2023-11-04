@@ -1,3 +1,5 @@
+#ifndef DIJKSTRA_H
+#define DIJKSTRA_H
 #include "graph.h"
 
 typedef struct dijkstraResult {
@@ -7,3 +9,4 @@ typedef struct dijkstraResult {
 
 dijkstraResult dijkstra(const graph theGraph, const int source);
 void printShortestPath(const dijkstraResult result, const graph theGraph, const int source, const int target);
+#endif

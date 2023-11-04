@@ -1,6 +1,6 @@
-#pragma once
+#ifndef GRAPH_H
+#define GRAPH_H
 // 使用邻接表法
-
 // 边节点
 typedef struct ENode {
     int adjvex; // 该边在顶点表中的位置
@@ -33,3 +33,4 @@ void printGraph (const graph theGrpah);
 
 // 查找权重
 int findWeight(graph theGraph, int source, int adjvex);
+#endif

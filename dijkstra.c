@@ -4,7 +4,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-#include <math.h>
 
 void updateDist(int *const dist, const int *const S, const int SLength, const graph theGraph, int *const path, const pair cumWeight) {
     ENode *p = theGraph.vertices[S[SLength - 1]].first;
