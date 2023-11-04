@@ -11,9 +11,10 @@ VNode *newVertices(const int length, const int data[]) {
     return newVertice;
 }
 
-void setEdge(VNode *const vertices, const int vertice, const int adjvex) {
+void setEdge(VNode *const vertices, const int vertice, const int adjvex, const int weight) {
     ENode* node = (ENode*)malloc(sizeof(ENode));
     node->adjvex = adjvex;
+    node->weight = weight;
     node->next = NULL;
     if (vertices[vertice].first == NULL) vertices[vertice].first = node;
     else {
@@ -30,12 +31,12 @@ graph generateGraphFromFile(const char filename[]) {
     int *data = (int*)malloc(sizeof(int) * length);
     for (int i = 0; i < length; i++) fscanf(fp, "%d", &data[i]);
     VNode * vertices = newVertices(length, data);
-    int adjvex;
+    int adjvex, weight;
     char c;
     for (int i = 0; i < length; i++) {
         while (1) {
-            fscanf(fp, "%d", &adjvex);
-            setEdge(vertices, i, adjvex - 1); // Use adjvex - 1 to adapt the array starting from 0
+            fscanf(fp, "%d %d", &adjvex, &weight);
+            setEdge(vertices, i, adjvex - 1, weight); // Use adjvex - 1 to adapt the array starting from 0
             c = fgetc(fp);
             if (c == '\n' || c == EOF) break;
         }
@@ -54,7 +55,7 @@ void printGraph (const graph theGrpah) {
         else {
             ENode* p = theGrpah.vertices[i].first;
             do {
-                printf("-> %d ", p->adjvex + 1);
+                printf("--%d-> %d ",  p->weight, p->adjvex + 1);
                 p = p->next;
             } while (p != NULL);
         }

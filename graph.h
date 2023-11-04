@@ -3,6 +3,7 @@
 // 边节点
 typedef struct ENode {
     int adjvex; // 该边在顶点表中的位置
+    int weight; // 权值
     struct ENode *next; // 下一个边
 } ENode;
 
@@ -21,7 +22,7 @@ typedef struct graph {
 VNode * newVertices(const int length, const int data[]); // length 为顶点数量，data 数组为其内容
 
 // 设置边
-void setEdge(VNode *const vertices, const int vertice, const int adjvex); // vertices 为顶点表，vertice 为顶点，adjvex 为邻接顶点
+void setEdge(VNode *const vertices, const int vertice, const int adjvex, const int weight); // vertices 为顶点表，vertice 为顶点，adjvex 为邻接顶点
 
 // 从文件输入图
 graph generateGraphFromFile(const char filename[]);
