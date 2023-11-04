@@ -62,3 +62,12 @@ void printGraph (const graph theGrpah) {
         printf("\n");
     }
 }
+
+int findWeight(graph theGraph, int source, int adjvex) {
+    ENode *p = theGraph.vertices[source].first;
+    while (p != NULL) {
+        if (p->adjvex == adjvex) return p->weight;
+        p = p->next;
+    }
+    return -1;
+}

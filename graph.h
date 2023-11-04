@@ -1,3 +1,4 @@
+#pragma once
 // 使用邻接表法
 
 // 边节点
@@ -29,3 +30,6 @@ graph generateGraphFromFile(const char filename[]);
 
 // 打印图
 void printGraph (const graph theGrpah);
+
+// 查找权重
+int findWeight(graph theGraph, int source, int adjvex);
